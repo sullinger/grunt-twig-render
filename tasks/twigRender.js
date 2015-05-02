@@ -10,6 +10,7 @@
 
 var chalk = require( 'chalk' );
 var merge = require( 'merge' );
+var path = require( 'path' );
 
 // http://stackoverflow.com/questions/5999998/how-can-i-check-if-a-javascript-variable-is-function-type
 function isFunction(functionToCheck) {
@@ -188,6 +189,7 @@ module.exports = function(grunt) {
         // MUST be specified.
         var src = fileData.src;
         if (src && isArray(src)) {src = src[0];}
+        if(src) {src = path.normalize(src);}
         if(src && !fileData.template) {fileData.template = src;}
         if(src && !fileData.data) {fileData.data = src;}
 
